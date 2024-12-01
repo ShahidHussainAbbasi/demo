@@ -13,7 +13,7 @@ public class DemoApplication {
       SpringApplication.run(DemoApplication.class, args);
     }
     @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "git reset") String name) {
+    public String hello(@RequestParam(value = "name", defaultValue = "git --soft reset") String name) {
       return String.format("Hello New %s!", name);
     }
 }
