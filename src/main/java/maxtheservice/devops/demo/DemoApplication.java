@@ -14,6 +14,6 @@ public class DemoApplication {
     }
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "I'm in dev") String name) {
-      return String.format("Hello New %s!", name);
+      return String.format("Hello New %s!", name +" maxtheservice trying to deliver the best for software engineer.");
     }
 }
