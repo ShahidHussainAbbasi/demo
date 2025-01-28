@@ -1,7 +1,7 @@
 FROM openjdk:17
 LABEL auther="maxtheservice"
 RUN ["echo", "WELCOME TO THE maxtheservice YOUTUBE CHANNLE"]
-EXPOSE 8081
+EXPOSE 8098
 ENV JAVA_HOME="C:\Program Files\Java\jdk-17"
 CMD [ "echo", "$JAVA_HOME"]
 ADD target/demo-0.0.1-SNAPSHOT.jar demo.jar

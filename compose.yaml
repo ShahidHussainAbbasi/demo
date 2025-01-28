@@ -1,0 +1,36 @@
+# version: 'v1.0'
+# We use it for backword compatibility
+# name: 'demo2'
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demodb
+    ports:
+      - "3306:3306"
+    networks:
+      - demo-db-net
+      
+  core:
+    container_name: core_container
+    image: demo:v1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      - demo-db-net
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/demodb?allowPublicKeyRetrieval=true    
+
+
+networks:
+  demo-db-net:
