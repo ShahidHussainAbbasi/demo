@@ -26,6 +26,7 @@ jobs:
           DB_DATABASE: demodb
           DB_USER: root
           DB_PASSWORD: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps:
     - name: Set up MySQL
       run: |
