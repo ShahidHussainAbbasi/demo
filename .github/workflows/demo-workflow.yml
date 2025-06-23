@@ -27,7 +27,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Group of log lines
+    - name: Show message
       run: |
         echo "maxtheservice"    
         
