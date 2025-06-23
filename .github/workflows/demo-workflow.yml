@@ -18,4 +18,5 @@ jobs:
 
     - run: |
           docker login -u maxtheservice -p UNC333er!
+          docker compose build
           docker compose up
