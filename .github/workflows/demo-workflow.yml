@@ -25,9 +25,9 @@ jobs:
         env:
           MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: demodb
-          MYSQL_USER: ${{secrets.MYSQL_USER}}
+          MYSQL_USER: admin
           MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_USER}}
         ports:
           - 33306:3306
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
