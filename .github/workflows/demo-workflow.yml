@@ -20,20 +20,18 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-          mysql:
-            image: mysql:5.7
-            ports:
-              - 3306:3306
-            env:
-              MYSQL_DATABASE: demodb
-              MYSQL_ALLOW_EMPTY_PASSWORD: true
-              MYSQL_USER: root
-              MYSQL_PASSWORD: root
-            options: >-
-              --health-cmd "mysqladmin ping"
-              --health-interval 10s
-              --health-timeout 5s
-              --health-retries 5
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_DATABASE: SHOP_test
+          MYSQL_USER: ${{secrets.MYSQL_USER}}
+          MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
