@@ -25,12 +25,12 @@ jobs:
         env:
           MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: demodb
-          MYSQL_USER: admin
+          MYSQL_USER: ${{secrets.MYSQL_USER}}
           MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
-          MYSQL_ROOT_PASSWORD: ${{secrets.MYSQL_USER}}
+          MYSQL_ROOT_PASSWORD: mysql
         ports:
-          - 33306:3306
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          - 33308:33020
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 10
 
     steps:
     - run: |
