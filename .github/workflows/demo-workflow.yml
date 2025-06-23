@@ -22,22 +22,17 @@ jobs:
     services:
       mysql:
         image: mysql:5.7
-        env:
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_DATABASE: demodb
-          MYSQL_USER: ${{secrets.MYSQL_USER}}
-          MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
-          MYSQL_ROOT_PASSWORD: root
         ports:
-          - '8888:3306'
-        # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: demodb
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-    - name: Set up MySQL
-      run: mysql -h 127.0.0.1 --port 8888  -u root -p root -e 'CREATE DATABASE IF NOT EXISTS demodb;'
-      # run: |
-      #   sudo /etc/init.d/mysql start
-      #   mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' 
-
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
