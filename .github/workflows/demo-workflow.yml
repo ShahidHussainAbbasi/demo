@@ -33,7 +33,7 @@ jobs:
         # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - name: Set up MySQL
-      run: mysql -h 127.0.0.1 --port 8888  -u root -proot -e 'CREATE DATABASE IF NOT EXISTS demodb;'
+      run: mysql -h 127.0.0.1 --port 8888  -u root -p root -e 'CREATE DATABASE IF NOT EXISTS demodb;'
       # run: |
       #   sudo /etc/init.d/mysql start
       #   mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' 
