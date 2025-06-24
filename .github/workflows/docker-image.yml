@@ -21,6 +21,13 @@ jobs:
         distribution: 'temurin'
     - name: Build with Maven
       run: mvn clean install -DskipTests # Build your Spring Boot app
+      
+    - uses: actions/checkout@v3
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: maxtheservice
+        password: UNC333er!
     - name: Start Docker Compose services
       run: docker compose up --build # Build and start containers
     - name: Wait for MySQL to be ready
