@@ -28,8 +28,16 @@ jobs:
       with:
         username: maxtheservice
         password: UNC333er!
-    - name: remove all services
-      run: docker compose down --rmi all # remove all containers
+
+    - name: Docker Build and Push to DockerHub        
+      uses: docker/build-push-action@v3        
+      with:          
+        context: .          
+        push: true          
+        tags: ilkerguldali/boredapp:latest   
+
+    # - name: remove all services
+    #   run: docker compose down --rmi all # remove all containers
     - name: Start Docker Compose services
       run: docker compose up --build # Build and start containers
     # - name: Wait for MySQL to be ready
