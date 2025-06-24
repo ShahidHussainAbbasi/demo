@@ -11,7 +11,7 @@ import maxtheservice.devops.demo.entity.User;
 import maxtheservice.devops.demo.repository.UserRepository;
 import maxtheservice.devops.demo.service.UserService;
 
-// @Service
+@Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService{
 
