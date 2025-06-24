@@ -28,15 +28,17 @@ jobs:
       with:
         username: maxtheservice
         password: UNC333er!
+    - name: remove all services
+      run: docker compose down --rmi all # remove all containers
     - name: Start Docker Compose services
       run: docker compose up --build # Build and start containers
-    - name: Wait for MySQL to be ready
-      run: |
-        for i in $(seq 1 10); do
-          docker-compose exec mysql mysqladmin ping -h localhost --silent && break
-          echo "Waiting for MySQL..."
-          sleep 5
-        done
+    # - name: Wait for MySQL to be ready
+    #   run: |
+    #     for i in $(seq 1 10); do
+    #       docker-compose exec mysql mysqladmin ping -h localhost --silent && break
+    #       echo "Waiting for MySQL..."
+    #       sleep 5
+    #     done
     - name: Run integration tests
       run: mvn test # Run tests against the running services
     - name: Stop Docker Compose services
