@@ -25,6 +25,6 @@ jobs:
       run: docker-compose up -d --build # Build and start containers
     - name: Wait for MySQL to be ready
     - uses: actions/checkout@v3
-    - name: Build the Docker images 
-      working-directory: .
-      run: docker compose up --build
+    # - name: Build the Docker images 
+    #   working-directory: .
+    #   run: docker compose up --build
