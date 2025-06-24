@@ -21,4 +21,4 @@ jobs:
 
     steps:
     - name: Display message
-      run: echo "maxtheservice"
+      run: echo "Hello maxtheservice"
