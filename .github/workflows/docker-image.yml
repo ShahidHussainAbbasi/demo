@@ -13,11 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: maxtheservice
-        password: UNC333er!   
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image
+    - uses: actions/checkout@v3
+    - name: Build the Docker images 
+      working-directory: .
+      run: docker compose up --build
