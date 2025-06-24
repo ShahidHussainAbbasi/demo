@@ -22,7 +22,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean install -DskipTests # Build your Spring Boot app
     - name: Start Docker Compose services
-      run: docker-compose up -d --build # Build and start containers
+      run: docker compose up -d --build # Build and start containers
     # - name: Wait for MySQL to be ready
     # - uses: actions/checkout@v3
     # - name: Build the Docker images 
