@@ -48,10 +48,10 @@ jobs:
       with:
         context: "{{defaultContext}}"
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        # tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}   
         annotations: ${{ steps.meta.outputs.annotations }}     
-        # tags: maxtheservice/demo:latest
+        tags: maxtheservice/demo:latest
 
 
       
