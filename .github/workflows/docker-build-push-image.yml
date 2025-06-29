@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }} 
+
 jobs:
 
   build:
@@ -28,12 +34,21 @@ jobs:
         username: maxtheservice
         password: UNC333er!
 
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      with:
+           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          
+        
     - name: Build and Push to DockerHub
       uses: docker/build-push-action@v6
       with:
-        context: .
+        context: "{{defaultContext}}"
         push: true
-        tags: maxtheservice/demo:latest
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}        
+        # tags: maxtheservice/demo:latest
 
 
       
