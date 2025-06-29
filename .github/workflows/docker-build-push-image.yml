@@ -105,8 +105,8 @@ jobs:
     # - name: Run Docker Container
     #   run: docker run -p 8080:80 --name demo-container maxtheservice/demo:latest      
 
-    - name: check containers
-      run: docker ps
+    # - name: check containers
+    #   run: docker ps
 
     # - name: remove all services
     #   run: docker compose down --rmi all # remove all containers
