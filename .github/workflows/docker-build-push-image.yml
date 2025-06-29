@@ -79,7 +79,7 @@ jobs:
       run: docker compose down --rmi all # remove all containers
 
     - name: Run Docker Container
-      run: docker run -d -p 8080:80 --name demo-container maxtheservice/demo:latest      
+      run: docker run -p 8080:80 --name demo-container maxtheservice/demo:latest      
 
     - name: check containers
       run: docker ps
