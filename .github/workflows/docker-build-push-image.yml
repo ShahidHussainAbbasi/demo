@@ -56,10 +56,10 @@ jobs:
       with:
         context: "{{defaultContext}}"
         push: true
-        # tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}   
-        annotations: ${{ steps.meta.outputs.annotations }}     
         tags: maxtheservice/demo:latest
+        # tags: ${{ steps.meta.outputs.tags }}
+        # annotations: ${{ steps.meta.outputs.annotations }}     
 
 
       
@@ -92,23 +92,23 @@ jobs:
 
 
 
-    # - name: check images
-    #   run: docker images
+    - name: check images
+      run: docker images
 
-    # - name: pull the image
-    #   run: docker pull maxtheservice/demo:latest
+    - name: pull the image
+      run: docker pull maxtheservice/demo:latest
 
-    # - name: check images
-    #   run: docker images
+    - name: check images
+      run: docker images
 
-    # - name: remove all services
-    #   run: docker compose down --rmi all # remove all containers
+    - name: remove all services
+      run: docker compose down --rmi all # remove all containers
 
-    # - name: Run Docker Container
-    #   run: docker run -p 8080:80 --name demo-container maxtheservice/demo:latest      
+    - name: Run Docker Container
+      run: docker run -p 8080:80 --name demo-container maxtheservice/demo:latest      
 
-    # - name: check containers
-    #   run: docker ps
+    - name: check containers
+      run: docker ps
 
     # - name: remove all services
     #   run: docker compose down --rmi all # remove all containers
