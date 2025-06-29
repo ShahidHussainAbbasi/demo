@@ -38,7 +38,7 @@ jobs:
         # mvn clean install -DskipTests # Build your Spring Boot app
 
     - name: Upload jar
-      run: cp /home/runner/work/demo/demo/target/demo-0.0.1-SNAPSHOT.jar demo.jar
+      run: mkdir target && cp /home/runner/work/demo/demo/target/demo-0.0.1-SNAPSHOT.jar target
 
     - uses: actions/upload-artifact@v4
       with:
