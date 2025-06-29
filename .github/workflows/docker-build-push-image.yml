@@ -98,7 +98,7 @@ jobs:
 
     - name: Inspect
       run: |
-        docker image inspect myimage:latest      
+        docker image inspect demo:latest      
     # - name: remove all services
     #   run: docker compose down --rmi all # remove all containers
 
