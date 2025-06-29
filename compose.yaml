@@ -18,7 +18,7 @@ services:
       
   core:
     container_name: core_container
-    image: demo:v1.1
+    image: demo:V1.0
     build:
       context: .
       dockerfile: Dockerfile
