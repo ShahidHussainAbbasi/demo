@@ -60,11 +60,6 @@ jobs:
         tags: maxtheservice/demo:latest
         # tags: ${{ steps.meta.outputs.tags }}
         # annotations: ${{ steps.meta.outputs.annotations }}     
-
-
-      
-
-
       
 
 
