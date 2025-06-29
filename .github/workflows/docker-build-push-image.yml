@@ -92,6 +92,9 @@ jobs:
 
 
 
+    - name: check containers
+      run: docker ps
+
     - name: check images
       run: docker images
 
@@ -104,8 +107,8 @@ jobs:
     - name: remove all services
       run: docker compose down --rmi all # remove all containers
 
-    - name: Run Docker Container
-      run: docker run -p 8080:80 --name demo-container maxtheservice/demo:latest      
+    # - name: Run Docker Container
+    #   run: docker run -p 8080:80 --name demo-container maxtheservice/demo:latest      
 
     - name: check containers
       run: docker ps
