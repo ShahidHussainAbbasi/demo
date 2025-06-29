@@ -33,7 +33,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: maxtheservice/devops/demo:latest
+        tags: maxtheservice/demo:latest
 
 
       
@@ -70,7 +70,7 @@ jobs:
       run: docker images
 
     - name: pull the image
-      run: docker pull maxtheservice/devops/demo:latest
+      run: docker pull maxtheservice/demo:latest
 
     - name: check images
       run: docker images
@@ -80,7 +80,7 @@ jobs:
 
     - name: remove all services
       run: docker compose down --rmi all # remove all containers
-      
+
     - name: Start Docker Compose services
       run: docker compose up --build # Build and start containers
     # # - name: Wait for MySQL to be ready
