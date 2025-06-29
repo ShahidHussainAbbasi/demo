@@ -75,14 +75,20 @@ jobs:
     - name: check images
       run: docker images
 
-    - name: check containers
-      run: docker ps
-
     - name: remove all services
       run: docker compose down --rmi all # remove all containers
 
-    - name: Start Docker Compose services
-      run: docker compose up --build # Build and start containers
+    - name: Run Docker Container
+      run: docker run -d -p 8080:80 --name demo-container maxtheservice/demo:latest      
+
+    - name: check containers
+      run: docker ps
+
+    # - name: remove all services
+    #   run: docker compose down --rmi all # remove all containers
+
+    # - name: Start Docker Compose services
+    #   run: docker compose up --build # Build and start containers
     # # - name: Wait for MySQL to be ready
     # #   run: |
     # #     for i in $(seq 1 10); do
