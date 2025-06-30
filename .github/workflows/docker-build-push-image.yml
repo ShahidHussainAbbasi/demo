@@ -67,8 +67,11 @@ jobs:
     - name: Push Docker Compose images to Docker Hub
       run: docker compose push 
 
-    - name: Push Docker Compose images to Docker Hub
+    - name: Pull Docker Compose images from Docker Hub
       run: docker compose pull 
+
+    - name: Docker Compose up
+      run: docker compose up --build 
 
       # - name: build the docker image method 1
     #   id: build-docker-image
