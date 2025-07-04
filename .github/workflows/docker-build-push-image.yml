@@ -87,7 +87,7 @@ jobs:
         - name: Run demo container
           run: sudo docker run -p 8080:8080 --name demo maxtheservice/demo:latest
       
-          
+        
 
       # - name: build the docker image method 1
     #   id: build-docker-image
