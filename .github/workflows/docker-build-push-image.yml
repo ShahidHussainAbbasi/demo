@@ -66,24 +66,25 @@ jobs:
       run: docker images
 
   deploy:
-    runs-on: self-hosted
-    steps:
-      - name: check docker installation
-        run: |
-          if | [ -x "$(command -v docker)"]; then
-           echo "Erro: Docker is not installed." >&2
-           exit 1
-          fi
-      - name: pull image from docker hub
-        run: sudo docker pull maxtheservice/demo:latest
-      - name: delete existing container
-        run: |
-         if ["$(sudo docker ps -aq -f name=demo)" ]; then
-           sudo docker rm -f demo
-         fi
-      - name: run demo container
-        run: sudo docker run -p 8080:8080 --name demo --network demo maxtheservice/demo:latest
-
+        needs: build
+        runs-on: self-hosted
+        steps:
+          - name: Check Docker Installation
+            run: |
+              if ! [ -x "$(command -v docker)" ]; then
+                echo "Error: Docker is not installed." >&2
+                exit 1
+              fi
+          - name: Pull image from docker hub
+            run: sudo docker pull maxtheservice/demo:latest
+          - name: Delete existing container
+            run: |
+              if [ "$(sudo docker ps -aq -f name=demo)" ]; then
+                sudo docker rm -f demo
+              fi
+          - name: Run demo container
+            run: sudo docker run -p 8080:8080 --name demo --network demo maxtheservice/demo:latest
+    
 
 
 
