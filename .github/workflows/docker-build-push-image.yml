@@ -84,8 +84,6 @@ jobs:
               fi
           - name: Run demo container
             run: sudo docker run -p 8080:8080 --name demo --network demo maxtheservice/demo:latest
-    
-
 
 
 
