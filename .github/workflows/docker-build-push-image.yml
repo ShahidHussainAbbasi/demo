@@ -82,8 +82,8 @@ jobs:
             if [ "$(sudo docker ps -aq -f name=demo)" ]; then
               sudo docker rm -f demo
             fi
-        - name: Run mysql container
-          run: sudo docker run --name mysqldb -e MYSQL_ROOT_USER=root -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABSE=demodb -p 3306:3306 --network demo mysql:8.0
+        # - name: Run mysql container
+          # run: sudo docker run --name mysqldb -e MYSQL_ROOT_USER=root -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABSE=demodb -p 3306:3306 --network demo mysql:8.0
         - name: Run demo container
           run: sudo docker run -p 8080:8080 --name demo maxtheservice/demo:latest
       
