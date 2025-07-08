@@ -102,19 +102,30 @@ jobs:
               exit 1
             fi
         - name: Pull image from docker hub
-          run: sudo docker pull maxtheservice/demo:latest
+          run: docker pull maxtheservice/demo:latest
         - name: Delete existing container
           run: |
-            if [ "$(sudo docker ps -aq -f name=demo)" ]; then
-              sudo docker rm -f demo
+            if [ "$(docker ps -aq -f name=demo)" ]; then
+              docker rm -f demo
             fi
-        - name: Remove all containers
+        - name: Delete existing container
           run: |
-              sudo docker container prune -f
-        # - name: Run mysql container
-        #   run: sudo docker run --name mysqldb -e MYSQL_ROOT_USER=root -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABSE=demodb -p 3306:3306 --network demo mysql:8.0
+            if [ "$(docker ps -aq -f name=mysqldb)" ]; then
+              docker rm -f mysqldb
+            fi
+        # - name: Remove all containers
+        #   run: |
+        #       docker container prune -f
+        - name: Run mysql container
+          run: sudo docker run --name mysqldb -e MYSQL_ROOT_USER=root -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABSE=demodb -p 3306:3306 --network demo mysql:8.0
+        
         - name: Run demo container
-          run: sudo docker run -p 8080:8080 --name demo --network demo maxtheservice/demo:latest
+          run: docker run -p 8080:8080 --name demo --network demo maxtheservice/demo:latest
+
+        - name: check images
+          run: docker images
+        - name: check containers
+          run: docker ps -a
       
         
 
