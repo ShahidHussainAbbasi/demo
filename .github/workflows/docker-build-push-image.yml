@@ -116,6 +116,7 @@ jobs:
         # - name: Remove all containers
         #   run: |
         #       sudo docker container prune -f
+        
         - name: Run mysql container
           run: sudo docker run --name mysqldb -e MYSQL_ROOT_USER=root -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABSE=demodb -p 3306:3306 --network demo mysql:8.0
         

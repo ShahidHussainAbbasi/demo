@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import maxtheservice.devops.demo.entity.User;
 import maxtheservice.devops.demo.repository.UserRepository;
 import maxtheservice.devops.demo.service.UserService;
 
 @Service
-@AllArgsConstructor
+// @AllArgsConstructor
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
     @Autowired
